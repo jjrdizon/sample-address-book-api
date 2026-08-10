@@ -22,6 +22,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateContactResponse'
           description: Contact created successfully
+    get:
+      tags:
+        - Contacts V1
+      summary: Get all contacts
+      operationId: getContacts
+      responses:
+        '200':
+          description: Get all contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                default: []
+                items:
+                  $ref: '#/components/schemas/Contact'
+              example:
+                - name:
+                    first: 'Juan'
+                    last: 'dela Cruz'
+                    suffix: 'Jr.'
+                  contactNumberList:
+                    - countryCode: '+63'
+                      areaCode: '917'
+                      subscriberNumber: '123456'
+
 components:
   schemas:
     CreateContactRequest:
@@ -34,12 +59,34 @@ components:
           default: []
           items:
             $ref: '#/components/schemas/ContactNumber'
+      example:
+        name:
+          first: 'Juan'
+          last: 'dela Cruz'
+          suffix: 'Jr.'
+        contactNumberList:
+          - countryCode: '+63'
+            areaCode: '917'
+            subscriberNumber: '123456'
     CreateContactResponse:
       type: object
       properties:
         uuid:
           type: string
           format: uuid
+    Contact:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          $ref: '#/components/schemas/Name'
+        contactNumberList:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/ContactNumber'
     Name:
       type: object
       properties:
@@ -49,6 +96,10 @@ components:
           type: string
         suffix:
           type: string
+      example:
+        first: 'Juan'
+        last: 'dela Cruz'
+        suffix: 'Jr.'
     ContactNumber:
       type: object
       properties:
@@ -58,3 +109,7 @@ components:
           type: string
         subscriberNumber:
           type: string
+      example:
+        countryCode: '+63'
+        areaCode: '917'
+        subscriberNumber: '123456'
