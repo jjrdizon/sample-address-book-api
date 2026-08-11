@@ -62,6 +62,10 @@ components:
           default: [ ]
           items:
             $ref: '#/components/schemas/ContactNumber'
+      required:
+        - uuid
+        - name
+        - contactNumbers
     Name:
       type: object
       properties:
@@ -74,6 +78,8 @@ components:
         suffix:
           type: string
           example: 'Jr.'
+      required:
+        - first
     ContactNumber:
       type: object
       properties:
@@ -93,3 +99,8 @@ components:
         label:
           type: string
           example: 'Mobile'
+      required:
+        - uuid
+        - countryCode
+        - areaCode
+        - subscriberNumber
