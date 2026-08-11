@@ -37,51 +37,24 @@ paths:
                 default: []
                 items:
                   $ref: '#/components/schemas/Contact'
-              example:
-                - name:
-                    first: 'Juan'
-                    last: 'dela Cruz'
-                    suffix: 'Jr.'
-                  contactNumbers:
-                    - countryCode: '+63'
-                      areaCode: '917'
-                      subscriberNumber: '123456'
-                      label: 'mobile'
 
 components:
   schemas:
     CreateContactRequest:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/Name'
-        contactNumbers:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/ContactNumber'
-      example:
-        name:
-          first: 'Juan'
-          last: 'dela Cruz'
-          suffix: 'Jr.'
-        contactNumbers:
-          - countryCode: '+63'
-            areaCode: '917'
-            subscriberNumber: '123456'
-            label: 'mobile'
+      allOf:
+        - $ref: '#/components/schemas/Contact'
+
     CreateContactResponse:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
+      allOf:
+        - $ref: '#/components/schemas/Contact'
+
     Contact:
       type: object
       properties:
         uuid:
           type: string
           format: uuid
+          readOnly: true
         name:
           $ref: '#/components/schemas/Name'
         contactNumbers:
@@ -94,27 +67,29 @@ components:
       properties:
         first:
           type: string
+          example: 'Juan'
         last:
           type: string
+          example: 'dela Cruz'
         suffix:
           type: string
-      example:
-        first: 'Juan'
-        last: 'dela Cruz'
-        suffix: 'Jr.'
+          example: 'Jr.'
     ContactNumber:
       type: object
       properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
         countryCode:
           type: string
+          example: '+63'
         areaCode:
           type: string
+          example: '917'
         subscriberNumber:
           type: string
+          example: '123456'
         label:
           type: string
-      example:
-        countryCode: '+63'
-        areaCode: '917'
-        subscriberNumber: '123456'
-        label: 'mobile'
+          example: 'Mobile'
