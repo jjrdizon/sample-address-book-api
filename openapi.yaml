@@ -42,7 +42,7 @@ paths:
                     first: 'Juan'
                     last: 'dela Cruz'
                     suffix: 'Jr.'
-                  contactNumberList:
+                  contactNumbers:
                     - countryCode: '+63'
                       areaCode: '917'
                       subscriberNumber: '123456'
@@ -55,7 +55,7 @@ components:
       properties:
         name:
           $ref: '#/components/schemas/Name'
-        contactNumberList:
+        contactNumbers:
           type: array
           default: []
           items:
@@ -65,7 +65,7 @@ components:
           first: 'Juan'
           last: 'dela Cruz'
           suffix: 'Jr.'
-        contactNumberList:
+        contactNumbers:
           - countryCode: '+63'
             areaCode: '917'
             subscriberNumber: '123456'
@@ -84,7 +84,7 @@ components:
           format: uuid
         name:
           $ref: '#/components/schemas/Name'
-        contactNumberList:
+        contactNumbers:
           type: array
           default: [ ]
           items:
