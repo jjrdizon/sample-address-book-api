@@ -46,6 +46,7 @@ paths:
                     - countryCode: '+63'
                       areaCode: '917'
                       subscriberNumber: '123456'
+                      label: 'mobile'
 
 components:
   schemas:
@@ -68,6 +69,7 @@ components:
           - countryCode: '+63'
             areaCode: '917'
             subscriberNumber: '123456'
+            label: 'mobile'
     CreateContactResponse:
       type: object
       properties:
@@ -109,7 +111,10 @@ components:
           type: string
         subscriberNumber:
           type: string
+        label:
+          type: string
       example:
         countryCode: '+63'
         areaCode: '917'
         subscriberNumber: '123456'
+        label: 'mobile'
